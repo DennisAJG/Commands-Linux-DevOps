@@ -1,0 +1,110 @@
+Oque é o shell ?
+O shell é uma interface ou ambiente de programação para scripts 
+entre o terminal e o user. 
+
+Tipos de shell:
+bash
+csh
+zsh (mais usado)
+
+
+Comandos:
+$ date  -> retorna a data
+
+echo -> echo comando usado para print algo na tela 
+$ echo $SHELL -> echo pode ser usado para variáveis de ambiente. 
+$ echo $SHELL -> informa qual o shell que está sendo usado no terminal 
+
+type -> usado para validar se o comando é interno ou externo
+$ type cd -> cd is a shell builtin
+$ type clear -> clear is hashed (/usr/bin/clear) está num cache interno
+$ type tar -> tar is /usr/bin/tar comando externo que não faz parte do bash
+
+como o shell localiza os comandos externos (existe uma variável interna que armazena)
+echo $PATH -> mostra os diretórios dos paths
+
+
+pwd -> mostra o diretório atual
+
+cd -> modifica para qual diretório quer acessar 
+$ cd / -> acessar o / 
+$ cd ../ -> volta um diretório anterior 
+
+Executando um scripts.sh 
+$ ./scripts.sh -> executa o script no diretório onde está (Não está no Path e nem interno do SHELL)
+$ /home/user/scripts.sh -> caminho completo do script
+
+
+Variáveis de Ambientes:
+declarando uma variável de ambiente.
+$ NOME_VARIAVEL=valor 
+$ echo $NOME_VARIAVEL -> exibe a variável 
+OBS:
+Está variável está apenas visível nesta seção do shell
+
+export NOME_VARIAVEL -> Faz o processo de exportar a variável para ser visível de forma global
+
+para visualizar as variáveis temos o set e o env
+$ set | less -> exibe as variáveis locais e globais declaradas no bash 
+$ env | less -> exibe apenas variaveis globais 
+$ env TESTE=windows ./scripts.sh -> faz a consideração dessa variável global apenas para essa execução de script
+$ unset $NOME_VARIAVEL -> remove uma variável. 
+
+Variáveis pré-definidas:
+HISTFILE -> mostra aonde está o arquivo de histórico de comandos 
+HOME -> home do usuário local 
+LOGNAME -> nome do usuário que acessou 
+PATH -> exibe os caminhos do path 
+PWD -> exibe o ultimo diretorio que você está 
+SHELL -> exibe qual o shell que está sendo usado 
+TERM -> exibe qual o terminal que você está usando 
+todas essas variáveis pode ser exibidas pelo echo 
+
+Variáveis dinâmicas:
+$ echo $$ -> pid do shell atual do processo 
+$ echo $! -> mostra o ultimo pid do processo executado em background
+$ echo $? -> exibe se o ultimo comando foi executado com sucesso (0 ok / diferente de 0 é erro)
+$ echo ~ -> exibe o home do usuário local 
+$ echo ~user 
+$ echo ~root 
+
+Sequencia de comandos:
+$ clear ; date ; ls -> executa cada um dos comandos sequencialmente (não importa se o comando está certo ou não)
+$ ls /tmp/teste && echo linux -> ele só executa os comandos se o primeiro estiver correto 
+$ ls /tmp/teste || echo linux -> só executa o segundo comando se o primeiro não funcionar 
+
+$ history -> lista todos os comandos que já foram executados (cada usuário tem o arquivo de historico)
+$ !! -> executa o ultimo comando que foi digitado e está armazenado no history
+$ !number_history -> executa o comando que está informado pelo número 
+$ !string -> executa o ultimo comando que está na string 
+$ history -c -> limpa o arquivo de historico 
+OBS: o root é o único que pode visualizar os bash_historys dos usuários
+
+COMANDO IMPORTANTE 
+no seu teclado, se você digitar crtl+r ele abri um campo de pesquisa de comandos já utilizados
+
+
+Comandos para obter ajuda:
+$ man ls -> abri o manual de referencia do determinado comando 
+Opções "q" -> para sair  "/String" -> para pesquisar 
+OBS:
+para comandos externos, o man só consegue visualizar através do bash 
+execute o comando $ man bash 
+
+$ info ls -> manual de referencia mais reduzido do que o "man"
+$ man -k "system informations" -> informa todos os comandos que tem a referência da informação system information
+$ whatis command -> tras a mesma informação que o comando "man -k"
+$ apropos "update system" -> faz a busca do comando pela descrição.
+
+
+$ uname -> printa informação do sistema 
+$ uname -a -> mostra todas as informações de uma vez só 
+$ uname -s -> mostra o kernel 
+$ uname -r -> mostra a release do kernel 
+$ uname -v -> mostra a versão do kernel 
+
+$ alias -> usado para criar um apelido ou atalho para um comando 
+$ alias lt='ls /tmp' -> criar um alias que ao executar o lt na verdade ele vai executar o comando 'ls /tmp'
+
+$ which -> comando usado para procurar arquivo no $PATH 
+$ which echo -> procura aonde está o comando o echo 
