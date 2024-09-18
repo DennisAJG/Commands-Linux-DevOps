@@ -29,6 +29,7 @@ pwd -> mostra o diretório atual
 cd -> modifica para qual diretório quer acessar 
 $ cd / -> acessar o / 
 $ cd ../ -> volta um diretório anterior 
+$ cd ~ -> volta pro diretorio do user
 
 Executando um scripts.sh 
 $ ./scripts.sh -> executa o script no diretório onde está (Não está no Path e nem interno do SHELL)
