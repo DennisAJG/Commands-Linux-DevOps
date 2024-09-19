@@ -109,3 +109,23 @@ $ alias lt='ls /tmp' -> criar um alias que ao executar o lt na verdade ele vai e
 
 $ which -> comando usado para procurar arquivo no $PATH 
 $ which echo -> procura aonde está o comando o echo 
+
+Uso do Quoting:
+$ echo * -> mostra todos os arquivos e diretórios no diretorio atual 
+$ echo "*" -> imprime o * em sí 
+$ echo '*' -> imprime o * em sí 
+$ echo \* -> proteje apenas o caracter (*) seguinte 
+
+Diferença entre aspas duplas pras aspas simples:
+aspas duplas -> ela proteje todos os caracteres especiais exeto o $ ' \
+exemp:
+$ TESTE=Curso
+$ echo $TESTE
+Curso
+$ echo "$TESTE"
+Curso
+
+aspas simples -> ela proteje todos os caracteres especiais. 
+
+
+

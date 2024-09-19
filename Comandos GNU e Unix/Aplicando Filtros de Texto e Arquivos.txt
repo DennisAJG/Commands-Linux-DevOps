@@ -1,0 +1,131 @@
+Comando cat -> lê um conteudo de um texto.
+exemp:
+$ cat alunos.txt 
+$ cat -m alunos.txt -> mostra todas as linhas numeradas
+$ cat -b alunos.txt -> mostra apenas as linhas não brancas numeradas.
+$ cat -s alunos.txt -> quando existe mais de uma linha em branco, ele transforma em uma 
+$ cat -A alunos.txt -> mostra os todos os caracteres no arquivo. 
+
+Comando tac -> é o inverso do cat (lê do final pro começo)
+$ tac alunos.txt 
+
+Comando head -> mostra o cabeçalho de um arquivo (por padrão são as 10 primeiras linhas)
+$ head arquivo-longo.txt 
+$ head -n2 arquivo-longo.txt -> mostra apenas as 2 primeiras linhas 
+$ head -2 arquivo-longo.txt -> faz o mesmo processo de -m 
+$ head -c50 arquivo-longo.txt -> mostra apenas os 50 primeiros bytes.
+
+Comando tail -> mostra as ultimas 10 ultimas linhas. 
+$ tail arquivo-longo.txt 
+$ tail -n5 arquivo-longo.txt -> mostra apenas as ultimas 5 linhas 
+$ tail -f arquivo-longo.txt -> mostra as ultimas linhas, porém o mesmo fica aguardando alguma resposta (assim como arquivos de logs)
+crtl + c ele sai do tail -f 
+
+Comando less -> mostra um arquivo (geralmente longo) de forma paginada.
+$ less arquivo-longo.txt 
+Opções do less: 
+seta pra baixo ou pra cima -> ele vai mostrando linha por linha 
+barra de espaço -> vai pra próxima página 
+Opções de navegação do less:
+barra / -> vai procurar por essa palavra (n -> procura pela próxima palavra digitada após o / e o shit+n ele busca pra trás)
+crtl+g -> mostra o status do arquivo 
+q -> para sair 
+
+O less é muito usado com o | 
+O | é usado para pegar a saída do primeiro comando e jogar pro segundo comando. 
+
+Comando wc -> lê a quantidade de linhas de um arquivo 
+$ wc arquivo.txt -> linhas palavras quantidade_bytes arquivo.txt 
+$ wc -l arquivo.txt -> mostra apenas as quantidades de linhas 
+$ wc -w arquivo.txt -> mostra apenas as quantidades de palavras
+$ wc -c arquivo.txt -> mostra apenas as quantidades de bytes 
+$ wc -m arquivo.txt -> mostra apenas as quantidades de caracteres
+$ wc * -> mostra a quantidade pra todos os arquivos que estão no diretorio atual e depois mostra o total de todos 
+$ cat arquivo.txt | wc -l -> lê o conteudo do arquivo e depois mostra a quantidade de linhas 
+$ tail -n10 arquivo.txt | wc -> lê o conteudo do arquivo e depois mostra 
+
+Comando nl -> é semelhante ao cat -b, numerando apenas as linhas não brancas.
+$ nl arquivo.txt 
+
+Comando sort -> server para ordernar um arquivo por ordem alfabetica. (ordena pelas linhas em branco primeiro)
+$ sort arquivo.txt 
+$ sort -r arquivo.txt -> ordena de forma reversa 
+$ sort -k2 arquivo.txt -> ordena pelo segundo campo 
+$ cat arquivo.txt | sort -r 
+
+Comando uniq -> serve para mostrar entradas unicas dentro de um arquivo 
+$ uniq arquivo.txt -> vai mostrar apenas uma vez se tiver alguma palavra repetida
+OBS -> o uniq só reconhe palavras duplicadas se o mesmo estiverem numa linha abaixo da outra.
+$ sort arquivo.txt | uniq -> resolve linhas duplicadas
+$ uniq -d -> mostra apenas as linhas duplicadas
+$ uniq -c -> mostras quantas linhas tem duplicadas
+
+Comando od -> exibe o conteudo de um texto de forma octal 
+$ od arquivo.txt 
+$ od -tx arquivo.txt -> exibe em forma hexadecimal 
+
+Comando join -> combina 2 arquivos atraves de indices 
+$ join arquivo.txt arquivo1.txt 
+$ join -j2 arquivo.txt arquivo1.txt -> mostra a saída pelo campo 2 
+
+Comando paste -> combina linha a linha 
+$ paste arquivo.txt arquivo1.txt
+
+Comando split -> divide um arquivo em varios outros
+$ split -l20 arquivo.txt -> divide em arquivos a partir de 20 linhas 
+$ split -l20 arquivo.txt novo_arquivo_ -> divide passando um novo nome pros novos arquivos.
+$ split -b100 arquivo.txt novo_arquivo_2_ -> divide por 100 bytes. 
+
+Comando tr -> serve para pegar um conteudo de texto e pode alterar ou deletar esse conteudo 
+OBS: o comando tr só pode ser usado com o | 
+$ cat arquivo.txt | tr a-z A-Z -> transforma toda letra minuscula em minuscula
+$ cat arquivo.txt | tr A E -> transforma tudo que é A em E 
+$ cat arquivo.txt | tr ei EI -> transforma em cada um dos caracteres 
+$ cat arquivo.txt | tr [:upper:] [:lower:] -> transforma tudo que é maisculo para minusculo 
+$ cat arquivo.txt | tr ' ' '_' -> troca tudo que tem espaço vazio por _ 
+$ cat arquivo.txt | tr -d A -> deleta toda letra A 
+$ cat arquivo.txt | tr -d [:upper:] -> deleta tudo que está em maiusculo 
+$ echo "teeeste" | tr -s e -> remove partes repetidas de um conjunto de caracteres 
+teste 
+$ echo "teste    de   te" |tr -s " " -> remove a repetição de espaços
+$ tr -d "\r" < arquivogeradowindows.txt > novo_arquivo.txt -> corrige a diferença entre arquivos no formato windows para linux 
+
+
+Comando cut -> comando usado para recortar campos de um texto 
+$ cut -c1-5 arquivo.txt -> recortar do caracter 1 ao 5 
+$ cut -c5-10 arquivo.txt 
+$ cut -c1,2,5 arquivo.txt -> informa qual caracter que recortar 
+$ cut -b1-5 arquivo.txt -> recortar por bytes 
+$ cut -d" " -f1 arquivo.txt -> extrai apenas o campo 1
+$ cut -d" " -f1-3 arquivo.txt -> extrai os campos usando deletimando.
+
+Comando sed -> usado principalmente para pegar um conteudo e substituir ou pra deletar uma parte do texto.
+$ sed 's/Silva/Souza' arquivo.txt -> substitui Silva por Souza no arquivo 
+OBS: o sed s/ só substitui a primeira ocorrencia e não é segunda 
+$ sed 's/Silva/Souza/g' arquivo.txt -> substitui tudo na mesma linha 
+$ sed '3,5 d' arquivo.txt -> deleta da linha 3 até a linha 5 
+$ sed '/Silva/d' arquivo.txt -> deleta a linha que tem a palavra Silva 
+
+
+Comando file -> usado para mostra qual o tipo de arquivo. 
+$ file arquivogerado* 
+arquivosLinux: ASCII text 
+arquivosWindows: ASCII text, with CRLF line terminators 
+
+
+Compactação e Descompactação de arquivos:
+para criar arquivos Compactados:
+$ xz -k arquivolongo.txt 
+$ bzip2 -k arquivolongo.txt 
+$ gzip -k arquivolongo.txt 
+
+Lendo arquivos Compactados sem precisar Descompactar:
+$ xzcat arquivolongo.txt.xz  
+$ bzcat arquivolongo.txt.bz2 
+$ gcat arquivolongo.txt.gz 
+
+Comandos para gerar ou checar checksam ou rash
+$ md5sum image.iso
+$ sha256sum image.iso -> vai gerar uma sequencia de caracteres unica baseado nos bytes desse arquivo
+$ sha512sum image.iso
+
