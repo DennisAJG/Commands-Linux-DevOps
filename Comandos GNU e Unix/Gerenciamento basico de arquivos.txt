@@ -1,0 +1,25 @@
+Comando cd -> muda de dirotorios 
+$ cd /home/user
+$ cd .. -> volta um diretorio 
+$ cd - -> volta pro diretorio que estava antes de mudar
+$ cd ~ -> volta para o home do usuário no momento
+$ cd ../.. -> volta 2 níveis 
+
+Comando ls -> lista arquivos e diretorios 
+$ ls 
+$ ls -a -> mostra arquivos ocultos (.ssh .fonts)
+$ ls -l -> lista detalhada dos arquivos e diretorios 
+campos do ls -l:
+drwx (permissões do diretorio) 21(hardlinks) user(usuário) user(grupo) 4098(tamanho do arquivo em bytes) Mar 30 11:49 (data e hora da ultima alteração do arquivo) name_foler (nome do arquivo ou diretorio)
+$ ls -lh -> mostra o valor mais facil de ler. 
+$ ls -lR -> entra dentro de cada diretorio e mostra o resultado. 
+Exemplos com o ls trabalhando de forma dinamica:
+$ ls -l aul* -> mostra apenas os arquivos que começam com o aul e tudo oque tem em sequência
+$ ls -l aul? -> exige que tenha uma outra letra qualquer 
+$ ls -l aula?0 
+$ ls -l Aula[123] -> lista uma sequência de caracteres
+$ ls -l Aula[!123] -> nega a lista. 
+$ ls -l Aula[1-5] -> lista com range 
+$ ls -l Aula[!1-5] -> nega a lista com o range 
+$ ls -l Aula{10,20,30} -> lista por sequência de strings
+$ ls -l A{ula,ULA}1
