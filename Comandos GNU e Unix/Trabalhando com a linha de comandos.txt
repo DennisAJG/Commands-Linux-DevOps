@@ -26,7 +26,7 @@ echo $PATH -> mostra os diretórios dos paths
 
 pwd -> mostra o diretório atual
 
-cd -> modifica para qual diretório quer acessar 
+cd -> modifica para qual diretório você quer acessar 
 $ cd / -> acessar o / 
 $ cd ../ -> volta um diretório anterior 
 $ cd ~ -> volta pro diretorio do user
@@ -72,7 +72,7 @@ $ echo ~root
 Sequencia de comandos:
 $ clear ; date ; ls -> executa cada um dos comandos sequencialmente (não importa se o comando está certo ou não)
 $ ls /tmp/teste && echo linux -> ele só executa os comandos se o primeiro estiver correto 
-$ ls /tmp/teste || echo linux -> só executa o segundo comando se o primeiro não funcionar 
+$ ls /tmp/teste || echo linux -> só executa o segundo comando se o primeiro não funcionar, caso o primeiro comando der certo, ele só exibirá o primeiro comando. 
 
 $ history -> lista todos os comandos que já foram executados (cada usuário tem o arquivo de historico)
 $ !! -> executa o ultimo comando que foi digitado e está armazenado no history
@@ -93,7 +93,7 @@ para comandos externos, o man só consegue visualizar através do bash
 execute o comando $ man bash 
 
 $ info ls -> manual de referencia mais reduzido do que o "man"
-$ man -k "system informations" -> informa todos os comandos que tem a referência da informação system information
+$ man -k "system informations" -> informa todos os comandos que tem a referência de informação "system information"
 $ whatis command -> tras a mesma informação que o comando "man -k"
 $ apropos "update system" -> faz a busca do comando pela descrição.
 

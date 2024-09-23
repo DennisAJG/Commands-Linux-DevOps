@@ -23,3 +23,93 @@ $ ls -l Aula[1-5] -> lista com range
 $ ls -l Aula[!1-5] -> nega a lista com o range 
 $ ls -l Aula{10,20,30} -> lista por sequência de strings
 $ ls -l A{ula,ULA}1
+
+
+Comando cp: usado para copiar um arquivo de um diretorio para outro 
+Exemplo:
+cp alunos.txt /tmp 
+cp -v alunos* /tmp -> copiar todos os arquivos que tem alunos com -v 'verbose' para o /tmp
+'alunos2.txt' -> '/tmp/alunos2.txt' 
+OBS: ao usar o cp ele não pergunta se você quer copiar ou não, e isso é um perigo.
+cp -i alunos* /tmp -> Questiona se você realmente quer copiar o arquivo ou não. 
+cp: overwrite '/tmp/alunos.txt'? 
+OBS: O cp não compia diretorio
+cp -r Diretorio1 /tmp -> copia o diretorio e todo o seu conteudo dentro pro /tmp
+OBS: O comando cp quando é copiado de um lugar pro outro, o mesmo modifica o status do arquivo 
+cp -p aula8 /tmp -> preserva os dados do arquivo (como proprietário e data)
+cp aula8 curso8 -> pode copiar o arquivo com outro nome. 
+
+
+Comando mv: usado para mover um arquivo de um direitorio para outro 
+OBS: o Comando mv  não tem as opções -R e o -p assim como tem o cp
+mv aula6 /tmp 
+mv aula6 /tmp/curso6 -> renomear o arquivo 
+
+
+Comando touch: usado para criar um arquivo em branco 
+touch linux.txt -> cria o arquivo vazio 
+touch -a alunos-> modifica a ultima data de acesso  
+touch -t anomesdiahora aula6 -> modifica por data 
+
+
+Comando rm: remove arquvios de diretorios
+rm aula10 
+rm -i aula10 -> pergunta se você realmente quer remover o arquivo 
+rm -i aula* 
+rm -v aula1* -> modo verbose
+rm -r /tmp/test/ -> remove um diretorio
+OBS: outro comando que pode remover diretorios, porém só remove diretorios
+vazios que é o rmdir 
+rmdir -p Linux/ubuntu -> ele remove a arvore de diretorios porém os mesmos estejam vazios 
+
+
+Comando mkdir: cria um diretorio
+mkdir linux/ubuntu -> criar o diretorio e o sub-diretorio
+mkdir -p linux/ubuntu/versao1 -> vai criando uma arvore de diretorios
+mkdir --parents -> faz o mesmo processo do mkdir -p
+
+
+Comando find: usado para procurar arquivos de diretorios 
+find /home -name Aula10 -> procura no /home por nome o Aula10 
+find /home -name Aula* 
+find /home -user lpic1 -name Aula1* -> -user procura por usuário 
+find ./ -ctime -1 -> procura todos os arquivos que foram executados um dia antes 
+
+
+Comando tar: comando usado para comprimir arquivos e descomprimir 
+tar c -> criar um arquivo de backup 
+tar x -> extrair um arquivo de backup
+tar t -> listar quais os arquivos que tem compactado 
+Exemplos:
+tar cpfv backup.tar aula* -> 'p' preserver 'f' definir o nome do arquivo 'v' verbose 
+
+
+Compactando um arquivo:
+gzip backup.tar 
+gzip arquivo*.txt 
+ls backup*
+backup.tar.gz
+gunzip backup.tar.gz -> Descompacta.
+gunzip -k backup.tar -> Mantem os dois arquivos 
+
+bzip2 -k backup.tar -> mantem os arquivos 
+bzip2 -d background.tar,bz2 -> Descompacta
+
+o comando file consegue identificar o tipo de arquivo que foi comprimido 
+
+
+comando cpio: usado para compactação porém é precisa passar uma lista de arquivo no parametro 
+exemplo:
+find ./ -name "novo*" | cpio -o > backup.cpio 
+find ./ -name "novo*" | cpio -o | gzip > backup.cpio.gz 
+cpio -i < backup.cpio -> Descompacta
+
+
+comando dd: usado para copiar uma partição inteira 
+exemplo:
+df -h -> exibe quais as partições que são montadas no linux 
+dd if=/dev/sr0 of=imagem.img -> copia a partição para um arquivo 
+'if' -> origem 'of' -> destino 
+dd if=/tmp/teste of=/dev/sr0
+
+

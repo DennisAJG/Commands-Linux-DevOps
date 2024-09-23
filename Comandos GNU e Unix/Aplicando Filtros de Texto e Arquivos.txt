@@ -1,7 +1,7 @@
 Comando cat -> lê um conteudo de um texto.
 exemp:
 $ cat alunos.txt 
-$ cat -m alunos.txt -> mostra todas as linhas numeradas
+$ cat -n alunos.txt -> mostra todas as linhas numeradas
 $ cat -b alunos.txt -> mostra apenas as linhas não brancas numeradas.
 $ cat -s alunos.txt -> quando existe mais de uma linha em branco, ele transforma em uma 
 $ cat -A alunos.txt -> mostra os todos os caracteres no arquivo. 
