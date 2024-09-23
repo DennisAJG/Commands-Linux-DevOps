@@ -1,0 +1,24 @@
+Modificar prioridade de execução de processos no Linux:
+
+Uma forma de ver esses valores de prioridade é no top. 
+PR -> numero interno do linux que diz qual a prioridade naquele momento  
+NI -> prioridade que o usuário pode influenciar 
+
+O NI pode ser alterado por 2 comandos:
+$ nice -> defini e nice de um comando
+-20 ................ +19 
+mais prio            menos prio
+$ renice -> redefine o nice de um comando 
+
+$ nice -n15 name_program & -> inicia o programa com nice 15
+$ nice -15 name_program & 
+
+$ nice -n -15 name_program & -> inicia o programa com uma prioridade padrão 
+$ nice --15 name_program &
+$ renice -n 8 PID -> altera a prioridade do processo 
+$ renice -8 PID
+$ renice 8 PID 
+$ renice -n 5 -u user 
+$ renice -n 5 -g group 
+
+$ nice firefox -> o padrão dele vai ser '+10'

@@ -1,0 +1,138 @@
+Gerenciamento de processos no Linux:
+PID = Process ID 
+PPID = Parent Process ID (processo Pai)
+
+Comando ps: visualiza todos os processos que estão em execução no linux 
+ps -> mostra os processos que estão em execução do usuário 
+ps -u -> mostra no modo de exibição do usuário 
+USER PID %CPU %MEM 
+ps -ux | less -> mostra processos que não foram gerados pelo terminal (TTY) em uso 
+ps -uxa | less -> mostra todos os processos de todos os usuários 
+ps -uxaf | less -> mostra em formato de arvore (processo pai e filho)
+ps -lxa | less -> exibe um formato diferente, outras opções 
+
+Quanto a forma de uso:
+ps -ef | head -> tras um formato 
+ps ef | head -> tras um outro formato 
+
+ps axu | grep photo -> usa o grep para fazer filtros 
+ps u -C name_process -> mostra informações de um processo expecifico 
+
+
+Comando pstree -> mostra os processos de forma hieraquica
+$ pstree 
+$ pstree -p -> mostra o ID do processo 
+
+
+Comando pgrep -> mostra os processos conforme o programa executado 
+$ pgrep bash -> mostra os IDs do processo de bash
+3245
+$ pgrep bash -u root -> mostra o ID do processo bash do user root
+
+
+Comando top -> melhor programa para monitoramento dos processos da máquina 
+$ top -> abri uma tela interativa 
+algumas informações:
+top - 14:34  up 6:16, 2 users, load average: 0,07, 0,05, 0,00
+Tasks: 155 total
+
+opções do top:
+shift+m -> visualiza por processos que estão com mais execução de memoria RAM
+shift+c -> visualiza por processos que estão com mais execução de CPU
+u user -> visualiza os processos pelo user 
+r PID -> muda a prioridade de um processo 
+n 20 -> visualiza a quantidade solicitada dos processos
+k PID -> mata um determinado processo 
+h ou ? -> mostra as opções do comando top (q para sair)
+
+top -b -> joga de tempo em tempo na tela o processo. 
+top -b -d3 -n3 -> a cada 3 segundos (-d3) ele roda 3 vezes o processo (-n3)
+top -b -d3 -n3 > processos_linux.log -> pode ser jogado pra um arquivo 
+
+
+Comando para mandar sinais ao processo com o Kill:
+$ kill -l -> lista todos os sinais que podem ser mandados pros processos 
+Principais sinais:
+1) SIGHUP -> ele pode terminar ou reniciar o processo 
+2) SIGINT -> ele enterrompe o processo (crtl+c)
+3) SIGQUIT -> mata um processo 
+9) SIGKILL -> mata o processo brutamente 
+15) SIGTERM -> solicita que o processo seja enterrompido 
+
+Como usar o kill:
+$ ps axu | program -> visualize primeiro o processo 
+$ kill PID -> morre o processo (por padrão ele usa o -15)
+$ kill -s SIGKILL PID -> manda o sinal 
+$ kill -s 9 PID -> pode usar o numero 
+$ kill -9 PID 
+
+$ killall name_program -> mata um processo por nome 
+$ pkill name_program -> mata o processo por nome também 
+$ pkill -1 name_program -u user -> manda o sinal expecifico por determinado usuário 
+
+
+Comando uptime -> exibe a quanto tempo a máquina está ligada
+$ uptime 
+
+
+Comando free -> mostra a quantidade de memoria e suave 
+$ free -m -> mostra em megabytes
+$ free -g -> mostra em gigabytes 
+
+
+Comando screen -> é necessário instalar, ferramenta usada para se trabalhar em varias abas
+$ screen -> usado mais para ssh 
+crtl+a +c -> cria uma nova aba 
+crtl+a +n -> muda de aba 
+crtl+a +d -> desatach ou sai  de uma seção 
+screen -ls -> lista as abas 
+screen -r  -> retorna para a aba 
+exit -> fecha uma aba 
+screen top -> já inica o screen com o comando (top no exemplo)
+
+
+Processos em background e foreground:
+foreground é quando um processo deixa em aberto o terminal 
+background é quando o processo não fica prezo no terminal 
+comando:
+$ firefox & -> roda o firefox em background com o & 
+[1] 2456 -> job e o PID 
+
+
+Algumas formas de deixa o programa em background:
+$ program &
+$ jobs -> mostra os programas que estão rodando em background
+$ jobs -l -> mostra o pid 
+
+$ firefox -> executa o programa em foreground
+$ crtl+z -> deixa o programa em background (deixa em stopped)
+$ bg -> coloca o ultimo job em background
+$ jogs -l  -> vai visualizar os jobs em Running 
+$ fg -> deixa o ultimo job em foreground
+$ bg 2 -> expecifica qual processo vai deixar em background
+
+Comando nohup -> usado para conexões ssh onde que caso for feita uma desconeção, todos os processos podem morrer, é dai que usamos o nohup.
+$ nohup program & -> faz com que não aceite sinais o programa 
+
+
+Comando watch -> executa comandos periodicamente
+$ watch date -> por padrão executa a cada 2 segundos o comando 
+crtl+z -> encerra 
+$ watch "ps axu | grep program" 
+$ watch -n1 -> checa a cada um segundo
+
+
+Ferramenta tmux -> Gerenciamento de terminais 
+$ sudo apt install tmux
+$ tmux -> abri uma janela tmux
+[0] 0:bash
+$ crtl+b +c -> abrir uma nova janela
+1:bash
+$ crtl+b +, -> renomeia uma janela 
+$ crtl+b +b -> volta pra outra janela
+$ crtl+b +n -> vai para próxima janela (next)
+$ crtl+b +l -> vai pra ultima janale
+$ crtl+b +m -> lista as janelas
+$ ctrl+b % -> abri um painel ao lado de uma já existente 
+$ ctrl+b +d -> desatacha uma janela 
+$ tmux new -s connection -> abri uma nova conexão 

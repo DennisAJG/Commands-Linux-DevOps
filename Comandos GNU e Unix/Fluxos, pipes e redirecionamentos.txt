@@ -1,0 +1,50 @@
+Redirecionamentos de Entrada e Saida:
+Todo programa no linux recebe três prescritores que são:
+STDIN (0) -> entrada padrão
+STDOUT (1) -> saida padrão 
+STDERR (2) -> erro padrão 
+
+Redirecionamento da saida padrão é 0  '>'
+Exemplo:
+ls -l > saida_ls.out -> a saida do comando ls vai ser enviada para o arquivo 
+cat saida_ls.out 
+
+echo Linux >> saida_echo.out 
+cat saida_echo.out 
+
+Diferença entre '>' e o '>>':
+o '>' sobrescreve o conteudo 
+o '>>' adiciona o conteudo no final do arquivo 
+
+1>> é o código do STDOUT 
+exemplo: echo Linux5 1>> saida_echo 
+'>' = '1>'
+'>>' = '1>>'
+
+
+Redirecionamento de erro:
+exemplo:
+ls -l /tmp/erro 2> saida_erro_ls.out -> redireciona a saida do erro pro arquivo 
+ls -l /tmp/erro 2>> saida_erro_ls -> adiciona abaixo o Redirecionamento do erro no arquivo 
+
+Pode ser usado os 2 ao mesmo tempo:
+ls -l {Aula,AULA}3 > saida-ls.out 2> saida-ls-erro.out 
+ls -l {Aula,AULA}3 > saida_ls.out 2>&1 -> joga pro mesmo arquivo o stdout e o STDERR
+
+o '|' é usado também para Redirecionamento de entrada 
+
+
+Comando tee: usado para printar algo na tela e espera que haja alguma interação. 
+Exemplo: 
+ls -l /tmp | tee arquivo_log_tmp -> escreve o arquivo e printa na tela 
+
+
+Comando xargs é muito usado com o find 
+Exemplo:
+find /home -name "Aula3*" | xargs ls -l 
+find /home -name "Aula3*" | xargs rm -v 
+
+Executando um comando dentro de um outro comando:
+exemplo:
+echo "A versão do Kernel é: "`uname -r`" -> usamos a crase para fazer a executação do uname -r antes do echo 
+echo "A versão do kernel é: "$(uname -r)" -> MAIS USADA

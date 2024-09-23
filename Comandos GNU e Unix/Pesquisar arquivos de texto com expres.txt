@@ -1,0 +1,18 @@
+Busca em arquivos de texto.
+
+Conceito de REGEX = Regular Expression
+É um conjunto de caracteres que vai definir um padrão de texto.
+
+Comando grep:
+$ grep Linux texto.txt 
+Linux 
+LinuxUbuntu 
+$ grep -c linux texto.txt -> conta quantas ocorrências teve a palavra 'linux'
+$ grep -c Linux * -> procura 'Linux' em todos os arquivos do diretorio atual
+$ grep -i Linux texto.txt -> ignora o case-sensitive
+$ grep -r Linux t* -> procura de forma recursivo procurando por sub-diretorios
+$ grep -E  -> expande as espressões regulares
+$ egrep -> e o grep com Expression Regular
+$ fgrep -> não aplica Expression Regular
+$ grep -v Linux texto.txt -> não exibe o 'Linux' 
+$ grep -vi Linux texto.txt -> ignora o case-sensitive
