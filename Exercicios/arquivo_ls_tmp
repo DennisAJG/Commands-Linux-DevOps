@@ -1,0 +1,16 @@
+total 60
+drwxrwxr-x 2 dennis dennis 4096 set 24 13:56 dennis-code-zsh
+-rw------- 1 dennis dennis 1727 set 24 15:34 emacs-async-comp-wid-edit.el-F2hxH7.el
+drwx------ 2 dennis dennis 4096 set 24 15:34 libgccjit-sFCsQJ
+drwx------ 6 root   root   4096 set 24 15:21 snap-private-tmp
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-colord.service-THqrEm
+drwx------ 3 root   root   4096 set 24 13:51 systemd-private-6d58c95280124a27b0c72002af63eb0d-fwupd.service-u59SWI
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-ModemManager.service-8FLJIT
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-polkit.service-DM67hf
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-power-profiles-daemon.service-hdcWLX
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-switcheroo-control.service-bm1fO2
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-systemd-logind.service-XTpQI7
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-systemd-oomd.service-kJaTHE
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-systemd-resolved.service-qlbcGV
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-systemd-timesyncd.service-QXoig5
+drwx------ 3 root   root   4096 set 24 13:47 systemd-private-6d58c95280124a27b0c72002af63eb0d-upower.service-9S06P6

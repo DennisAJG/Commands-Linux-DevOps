@@ -46,5 +46,5 @@ find /home -name "Aula3*" | xargs rm -v
 
 Executando um comando dentro de um outro comando:
 exemplo:
-echo "A versão do Kernel é: "`uname -r`" -> usamos a crase para fazer a executação do uname -r antes do echo 
-echo "A versão do kernel é: "$(uname -r)" -> MAIS USADA
+echo "A versão do Kernel é: "`uname -r`""-> usamos a crase para fazer a executação do uname -r antes do echo 
+echo "A versão do kernel é: "$(uname -r)""-> MAIS USADA

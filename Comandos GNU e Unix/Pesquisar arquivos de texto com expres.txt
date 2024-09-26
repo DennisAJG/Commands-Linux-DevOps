@@ -16,3 +16,37 @@ $ egrep -> e o grep com Expression Regular
 $ fgrep -> não aplica Expression Regular
 $ grep -v Linux texto.txt -> não exibe o 'Linux' 
 $ grep -vi Linux texto.txt -> ignora o case-sensitive
+
+
+Expression Regular:
+usando o egrep:
+$ egrep "b[aei]g" texto.txt -> utilizando linhas 
+$ egrep "b[a-u]g" texto.txt -> irá encontrar todas as letras entre 'a' e 'u' 
+$ egrep "^Linux" texto.txt -> procura no começo da linha 
+$ egrep "Linux^" texto.txt -> procura no final da linha 
+$ egrep "^#" texto.txt -> mostra apenas o comentário 
+$ egrep -v "^#" texto.txt -> mostra tudo que não é comentário.
+$ egrep "^$" texto.txt -> mostra todas as linhas em branco 
+$ egrep -v "^$" texto.txt -> não mostra as linhas em branco
+$ egrep "b[a-i]g..." texto.txt -> solicita que tenha 3 letras após o 'g'
+$ egrep "O.Linux" texto.txt -> solicita um caractere entro o 'O' e 'L'
+$ egrep "O.*Linux" texto.txt -> solicta entro o 'O' que tenha qualquer coisa
+$ egrep "O*Linux" texto.txt -> solicita tudo que não tenha o 'O'
+$ egrep '\bLinux\b' texto.txt -> defini o começo e fim de uma palavra
+$ egrep 'bag|beg' texto.txt -> ou um ou outro 
+$ egrep '(bag|beg)inner' texto.txt -> combinações
+
+
+Comando sed com Expression Regular:
+lembrando do comando sed:
+$ sed '/^#/d' texto.txt 
+$ sed '/[Ll]inux/d' texto.txt
+$ sed 's/[Li]inux/Windows' texto.txt 
+
+$ egrep -i "linux\." texto.txt -> expressa o '.' como um texto 
+$ grep 'ba{1,3}h' novo-texto.txt -> {1,3} encontra o 'a' de 1 a 3 vezes
+OBS: ele não trata como um caractere especial, então o resultado vai ser:
+ba{1,3}h
+para corrigir:
+$ grep 'ba\{1,3}\h' novo-texto.txt 
+no egrep vai funcionar normal 

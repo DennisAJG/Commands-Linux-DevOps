@@ -1,0 +1,125 @@
+Conceito de BIOS:
+BIOS -> Basic Input Output System (Firmware da placa-mãe), é nela que fazemos algumas configurações da máquina, como 
+        ordem de boot, configuração de CPU ou RAM.
+
+POST -> Power-On Self-Test primeira ação ao ligar a máquina, onde que inicializa
+        um teste de cada componente para validar se está tudo ok. 
+
+EFI -> Extensible Firmware Interface, é uma versão mais moderna a BIOS
+
+UEFI -> Unfied EFI, é uma BIOS com mais funcionalidades.
+
+
+
+Conteito de IRQ:
+Interrupt Request envia sinais ao CPU. 
+Principais IRQs:
+IRQ 1 - Teclado
+IRQ 2 - Cascateador de IRQs (sobe os IRQs do 8 ao 15)
+IRQ 3 - Porta Serial 2 (RS-232)
+IRQ 4 - Porta Serial 1 (RS-232)
+IRQ 8 - Relógio da CMOS
+IRQ 9 - Placa de Vídeo
+IRQ 11- Controlador USB
+IRQ 14- IDE Primária
+IRQ 15- IDE Secundária 
+
+para visualizar o mapeamento de IRQs no linux é através do arquivo:
+/proc/interrupts 
+
+OBS:
+O /proc é um diretorio (filesystem dinamico) contem varios arquivos e diretorios que 
+contem informações do sistema em sí.
+
+
+Conceito de Endereços I/O (E/S):
+Endereços de Entrada e Saida é uma lista de Endereços de memória utilizadas para 
+comunicação entre a CPU e os demais dispositivos de Hardware
+
+para visualizar a lista no linux fica no arquivo:
+/proc/ioports 
+
+
+Conceito de DMA:
+Direct Memory Addressing é um canal que permite que os dispositivos transmitam os 
+dados dieretamente para a memória, sem utilizar a CPU e não é utilizado por todos os 
+dispositivos.
+
+para visualizar basta acessar o arquivo:
+/proc/dma 
+
+
+Conceito sobre Barramentos:
+Interface de comunicação física entre os dispositivos e a placa-mãe
+Tipos:
+PCI -> Peripheral Component Interconnect
+comando linux para visualizar:
+$ lspci 
+$ lspci -s 00:07.0 -v (Identificador) -> visualiza mais informação sobre o dispositivo 
+USB -> Universal Serial Bus
+comando linux para visualizar:
+$ lsusb
+$ lsusb -s 001:001 (Bus:Device) -> visualiza mais detalhes sobre o dispositivo 
+Bus -> Barramento
+Device -> dispositivos
+
+
+Conceito de Partições Virtuais:
+Contem informações em Partições ou arquivos de forma dinamica na sua execução 
+(no momento de sua execução).
+Principais diretorios que são dinamicos:
+/proc -> informações dos processos ativos e recursos de Hardware.
+/sys -> informações sobre dispositivos de Hardware (sysfs)
+/dev -> referência aos dispositivos do sistema, inclusive de armazenamento (udev)
+
+OBS: o linux trata os dispositivo como um arquivo de referência.
+Exemplo: /dev/hda1 se refere a um dispositivo de armazenamento (hd ou ssd)
+
+udev -> Device Manager processo (gerenciador de dispositivos)
+dbus -> Responsavel pela comunicação entre os processos do linux, onde ele informa se um hardware foi conectado ou não 
+
+Diferença entre ColdPlug x HotPlug:
+ColdPlug -> São dispositivos que para conectar precisa-se desligar a máquina 
+HotPlug -> São dispositivos que para conectar não precisa necessariamente desligar a máquina
+
+
+$ df -a  -> lista todas as Partições até as dinamicas (Virtuais)
+
+
+Alguns arquivos do /proc:
+$ cat /proc/cpuinfo -> tras informações da CPU 
+$ cat /proc/meminfo -> tras informações da RAM 
+$ cat /proc/swaps -> informações de swap 
+$ cat /proc/cmdline -> são parametros que o bootloader (GRUB) para para o kernel 
+$ cat /proc/filesystems -> mostra os tipos de filesystems que podem ser usados.
+$ cat /proc/mounts -> mostra as Partições que estão montadas
+
+Mais informações do udev:
+$ ps axu | grep udev -> mostra o processo de udev 
+$ udevadm monitor -> valida se um dispositivo foi conectado ou desconectado. 
+
+
+
+Dispositivos de Armazenamento:
+SATA -> Serial Advanced Technology Attachment
+1 dis por cabo
+mais rápido que o PATA 
+no linux é mapeado como:
+/dev/sda - Primeiro disco 
+/dev/sdb - Segundo disco
+/dev/sdc - Terceiro disco 
+
+SCSI -> Small Computer System Interface.
+Usado mais em servidores de grande porte 
+Tipos:
+8 bits (permite 7 dispositivos + 1 Controlador)
+16 bits (permite 16 dispositivos + Controlador)
+No linux é mapeado como:
+/dev/sda - Primeiro disco
+/dev/sdb - Segundo disco 
+$ cat /proc/scsi/scsi -> informações do disco 
+
+
+$ fdisk -l -> mostra os discos que estão sendo usados no sistemas.
+
+

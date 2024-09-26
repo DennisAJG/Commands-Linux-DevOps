@@ -1,0 +1,66 @@
+Usando o vi.
+$ vi novo-arquivo.txt 
+$ vi arquivo.txt 
+
+Principais comandos do vi:
+modos de operações:
+modo de navegação -> podem ser usados com as setas pra 'cima' e pra 'baixo'
+opções:
+/palavra que eu quero 
+n -> vai pra próxima ocorrência 
+N -> procura do fim pro começo 
+?palavra -> procura do ponto de partida onde está na linha 
+h -> move um caractere pra trás
+j -> vai pra próxima linha 
+k -> sobe uma linha 
+l -> vai pro próximo caractere
+
+modo de inserção -> digite a tecla 'i'  -- INSERT -- pra sair digite a tecla 'esc'
+opções:
+i ->  entra no modo edição 
+o -> começa a editar na linha de baixo 
+O -> começa a editar na linha de cima 
+a -> começa editar no próximo caractere
+A -> final da linha 
+
+modo de comando -> digite a tecla ':'  pra sair digite a tecla 'esc'
+opções:
+cc -> recorta e entra no modo de edição
+p -> inserir o conteudo recortado 
+dd -> recorta sem entrar no modo de edição
+yy -> copia uma linha 
+y3y -> copia 3 linhas 
+:w -> salva um arquivo e continua no mesmo 
+:q -> sai do editor 
+:q! -> sai sem salvar 
+:wq -> sai e salva 
+:x -> sai e salva 
+:wq! -> sai e salva ignorando qualquer aviso 
+ZZ -> sai e salva 
+:!ls /tmp -> pode executar comandos linux dentro do vi
+:e! -> carrega informações caso houve uma alteração no arquivo. 
+$ vi -> entra no vi sem um arquivo definido. 
+:wq novo-arquivo.txt 
+salva o novo arquivo.
+
+
+Usando o nano e emacs:
+$ nano -> entra já no modo de edição.
+ctrl+g -> manual do nano 
+ctrl+x -> sai do nano 
+ctrl+o -> salvo o arquivo 
+alt+/ -> vai pro final
+alt+\ -> vai pro começo 
+ctrl+v -> vai pra próxima página
+ctrl+n -> vai pra página anterior 
+crtl+shift+- -> seleciona qual linha quer ir 
+ctrl+w -> procura por algo 
+
+
+$ sudo apt-get install -y emacs
+$ emacs arquivo-longo.txt 
+Carrega uma interface grafica (caso o seu linux tenha a interface grafica)
+o emacs olha a variavel $DISPLAY
+$ crtl+x ctrl+c -> sai do emacs 
+$ ctrl+x ctrl+f -> procura um arquivo.
+$ ctrl+x ctrl+s -> salva um arquivo 

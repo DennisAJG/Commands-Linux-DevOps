@@ -1,0 +1,21 @@
+total 80
+-rw-rw-r-- 1 dennis dennis  173 set 23 08:50 alunos.txt.bz2
+-rw-rw-r-- 1 dennis dennis  170 set 23 08:50 alunos.txt.gz
+-rw-rw-r-- 1 dennis dennis  220 set 23 08:50 alunos.txt.xz
+-rw-rw-r-- 1 dennis dennis 5187 set 24 15:33 arquivolongo.txt
+-rw-rw-r-- 1 dennis dennis   38 mai 18  2017 codigo-aluno.txt
+-rw-rw-r-- 1 dennis dennis   21 mai 18  2017 notas-aluno.txt
+-rw-rw-r-- 1 dennis dennis 1077 set 24 14:42 novo_arquivo_longo.txtaa
+-rw-rw-r-- 1 dennis dennis  886 set 24 14:42 novo_arquivo_longo.txtab
+-rw-rw-r-- 1 dennis dennis  898 set 24 14:42 novo_arquivo_longo.txtac
+-rw-rw-r-- 1 dennis dennis 1431 set 24 14:42 novo_arquivo_longo.txtad
+-rw-rw-r-- 1 dennis dennis  686 set 24 14:42 novo_arquivo_longo.txtae
+-rw-rw-r-- 1 dennis dennis    0 set 24 15:35 saida_ls.out
+-rwxrwxr-x 1 dennis dennis   91 mai 18  2017 Script_Exemplo.sh
+-rwxrwxr-x 1 dennis dennis  123 mai 18  2017 Script_Variavel.sh
+-rw-r--r-- 1 dennis dennis  257 nov 27  2017 texto.txt
+-rw-rw-r-- 1 dennis dennis 1077 set 24 14:41 xaa
+-rw-rw-r-- 1 dennis dennis  886 set 24 14:41 xab
+-rw-rw-r-- 1 dennis dennis  898 set 24 14:41 xac
+-rw-rw-r-- 1 dennis dennis 1431 set 24 14:41 xad
+-rw-rw-r-- 1 dennis dennis  686 set 24 14:41 xae

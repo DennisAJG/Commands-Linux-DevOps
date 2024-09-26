@@ -11,7 +11,7 @@ ps -uxa | less -> mostra todos os processos de todos os usuários
 ps -uxaf | less -> mostra em formato de arvore (processo pai e filho)
 ps -lxa | less -> exibe um formato diferente, outras opções 
 
-Quanto a forma de uso:
+Outra forma de uso:
 ps -ef | head -> tras um formato 
 ps ef | head -> tras um outro formato 
 
@@ -75,7 +75,7 @@ Comando uptime -> exibe a quanto tempo a máquina está ligada
 $ uptime 
 
 
-Comando free -> mostra a quantidade de memoria e suave 
+Comando free -> mostra a quantidade de memoria e swap  
 $ free -m -> mostra em megabytes
 $ free -g -> mostra em gigabytes 
 
@@ -107,7 +107,7 @@ $ jobs -l -> mostra o pid
 $ firefox -> executa o programa em foreground
 $ crtl+z -> deixa o programa em background (deixa em stopped)
 $ bg -> coloca o ultimo job em background
-$ jogs -l  -> vai visualizar os jobs em Running 
+$ jobs -l  -> vai visualizar os jobs em Running 
 $ fg -> deixa o ultimo job em foreground
 $ bg 2 -> expecifica qual processo vai deixar em background
 

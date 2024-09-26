@@ -1,0 +1,88 @@
+Alterar os Runlevels, Shutdown e Reboot.
+Gerenciadores de inicialização:
+Principais INITs utilizados:
+1 - SystemV (SysV) - init original
+2 - Systemd - gerenciador de sistemas e serviços compatível com o SysV
+3 - Upstart - gerenciador de serviços substituto ao init, mas com opções de 
+compatibilidade
+
+
+SystemV (SysV) - init 
+1 - runlevel - nível de execução do sistema
+2 - Cada runlevel carrega um conjunto de programas, scripts e serviços 
+3 - Cfg principal /etc/inittab
+4 - diretorios de scripts:
+    /etc/init.d/
+    /etc/rc.d/
+
+Runlevels:
+0 - Desligamento 
+1 - Single user (modo de recuperação)
+3 - Multiusuário (com rede) usado em servidores
+5 - Multiusuário (com rede e gráfico)
+6 - Reinicialização 
+
+Comandos:
+$ runlevel -> mostra qual o runlevel que está sendo usado 
+$ init runlevel -> entra no runlevel que você quer 
+$ telinit runlevel -> entra no runlevel que você quer
+
+Opções do telinit:
+$ telinit -q -> recarrega o daemon 
+
+
+
+Conceitos do SYSTEMD:
+1 - Systemd - gerenciador de sistemas e serviços compatível com o sysv 
+2 - Melhorias como paralelização, uso do dbus, entre outros
+3 - Conceito de unidades (Units)
+4 - Unidade - Nome.Tipo (ex: httpd.service; nginx.service)
+
+Tipos de serviços: 
+1 - service 
+2 - socket 
+3 - device 
+4 - mount 
+5 - target - equivale ao runlevel 
+
+Principais comandos do systemd:
+$ systemctl list-units -> lista todas as unidades
+$ systemctl rebbot -> rebbot da máquina 
+$ systemctl poweroff -> desliga a máquina 
+$ systemctl set-default multi-user.target -> defini o multi-user como target padrão 
+$ systemctl isolate name.targe -> muda o target 
+$ systemctl default -> inicializa o target default 
+$ systemctl status name.service -> status do serviço 
+$ systemctl start name.service -> start do serviço 
+$ systemctl stop name.service -> stop do serviço
+$ systemctl enabled name.service -> deixa o serviço ativo após a inicialização do sistema 
+
+
+UPSTART:
+1 - Gerenciador de serviços substituto ao init
+2 - Mantem compatibilidade
+3 - configurações em /etc/init/
+4 Principais comandos:
+$ initctl list 
+$ start serviço
+$ stop serviço 
+$ status serviço
+
+
+Comandos de Shutdown e restart no linux:
+$ shutdown -> desliga a máquina a 1 minuto (em outra seção ele notifica que a máquina vai ser desligada)
+$ shutdown -c -> cancela do desligamento 
+$ shutdown -r -> sistema será reinicializado 
+$ shutdown -h -> só desliga o sistema linux e não a máquina 
+$ shutdown -r +10 -> reagenda um restart a 10 minutos 
+$ shutdown 18:00 -> programa um desligamento as 18 hrs 
+$ reboot -> reinicia a máquina 
+$ halt -> desliga o linux e não a máquina 
+$ wall "mensagem" -> manda uma mensagem para todos os usuários do sistema 
+
+
+ACPI - Advanced Configuration adn PowerInterface:
+trabalha no gerenciamento da energia do hardware 
+$ sudo apt install -y acpi 
+$ acpi -> informações da bateria 
+$ acpi -v -> mostra todas as informações 

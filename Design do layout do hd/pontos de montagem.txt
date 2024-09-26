@@ -1,0 +1,46 @@
+Partição e ponto de montagem:
+Uma partição é chamada quando dividimos o hd em partes e podemos associar 
+como sda1 / sda2 / sda3
+
+Um ponto de montagem é quando vinculamos uma partição é um diretorio.
+Exemplo:
+sda1 /  
+sda2 /home
+sda3 /var
+
+Vantagens do particionamento:
+1 - Gerenciamento do Espaço em Disco 
+2 - Diferentes tipos de FileSystem para cada partição 
+3 - Proteção contra erros do disco 
+4 - Diferentes níveis de segurança
+5 - Backup facilitado 
+
+
+Sistemas de particionamento:
+1 - MBR: Master Boot Record 
+    -> Padrão mas é limitado a 2 TB por partição
+2 - GPT: GUID Partition Table
+    -> Utilizado quando são necessárias partições maiores de 2 TB
+    -> Maioria dos sistemas com EFI utilizam GPT 
+
+Partições MBR:
+Tipos de partição:
+    1 -> Primária
+    2 -> Extendida (tipo de Primária): Contém as Partições Lógicas
+    3 -> Lógica 
+Limitida a 4 partições primárias ou 3 primárias + 1 extendida 
+Primárias numeradas de 1 a 4. Ex: sda1,sda3,sda4 
+Lógicas numeradas a partir de 5. Ex: sda5,sda6,sda7
+
+Partições no Linux:
+1 - A partição / é a primeira partição montada pelo kernel
+2 - Ao menos 2 partições devem ser criadas: / e swap
+3 - Código dos tipos de partição:
+    -> 0x83 = Linux FileSystem
+    -> 0x82 = Linux swap 
+4 - Partições mais comuns:
+    -> /home = Onde fica os dados dos usuários
+    -> /var = Contem arquivos temporários
+    -> /tmp = Arquivos de lock e temporários
+    -> /boot = Contem os arquivos do kernel e do initrd
+    -> /usr = 

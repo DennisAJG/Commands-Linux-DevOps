@@ -77,12 +77,22 @@ Current Version: 4.5 (Exam codes 201-450 and 202-450). Note: the exams with the 
 
 Prerequisites: The candidate must have an active LPIC-1 certification to receive LPIC-2 certification, but the LPIC-1 and LPIC-2 exams may be taken in any order
 
-Requirements: Passing exams 201 and 202
 
 Validity Period: 5 years
 
+
+dennis está editando este arquivolongo.txt 
+
+
+Requirements: Passing exams 201 and 202
+
+Requirements: Passing exams 201 and 202
+agora estou editando na linha de baixo
+
+Requirements: Passing exams 201 and 202
 Languages: English, German, Portuguese (Brazilian), Japanese
 
+Requirements: Passing exams 201 and 202
 To become LPIC-2 certified the candidate must be able to:
 
     perform advanced system administration, including common tasks regarding the Linux kernel, system startup and maintenance;
@@ -92,3 +102,4 @@ To become LPIC-2 certified the candidate must be able to:
 
 
 dennis
+teste

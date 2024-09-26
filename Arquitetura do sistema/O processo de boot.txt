@@ -1,0 +1,62 @@
+O Boot do sistema:
+
+Como funciona o fluxo de boot no linux:
+1- BIOS -> Localiza e Executa a MBR 
+2- MBR -> Master Boot Record onde executa o Bootloader
+3- Bootloader(GRUB/LILO) -> Seleciona e Executa o Kernel e o Initird 
+4- Kernel -> Executa o /sbin/init 
+5- Init -> Inicia os programas do runlevel/target definidos
+
+
+Conceito de MBR:
+Master Boot Record, localizado no primeiro setor do disco bootável
+/dev/hda ou /dev/sda 
+Contém informações, carrega e executa o GRUB 
+
+
+Conceito de Bootloader:
+O Bootloader é um gerenciador de Boot que tem a funcção de carregar o sistema operacional na
+memória. Os mais comuns são o GRUB e o LILO.
+
+
+Comando para visualizar todo o processo de boot:
+$ dmesg | less -> lê oque foi registrado no boot 
+
+
+
+BOOT UEFI:
+UEFI -> Unifed Extensible Firmware Interface 
+Firmware que substitui a BIOS 
+
+Processo de Boot - UEFI:
+UEFI 
+1 - lê a partição ESP
+2 - Carrega o Bootloader específico 
+
+Bootloader (GRUB)
+1 - Seleciona e Executa o Kernel e o initird 
+
+Kernel
+1 - Executa o /sbin/init 
+
+Init 
+1 - Inicia os programas do runlevel/target definido 
+
+UEFI - Caracteristicas:
+1 - Não lê dados da MBR 
+2 - Obtêm os bootloaders pelo ESP (EFI System Partition)
+     2.1 - Montada no diretório /boot/efi/
+     2.2 - Utiliza um filesystem do tipo FAT 
+3 - Utiliza (preferencialmente) Partições GPT ao invés de MBR 
+    3.1 - Suporta partições além do limit de 2TB 
+4 - Implementa o boot Seguro (só realiza o boot através de uma kernel assinada)
+5 - Possui modo de compatibilidade com a BIOS
+6 - Configurado pelo UEFI Boot Manager 
+    6.1 - No linux através do comando: efibootmgr 
+
+
+Comando journalctl:
+usado para coletar e visualizar informações do processo de boot da máquina 
+$ journalctl -b -> status do boot atual
+$ journalctl -k -> mostra mensagens do kernel do boot atual 
+$ journalctl -f -> mostra os logs de registros que podem apresentar no sistema 
