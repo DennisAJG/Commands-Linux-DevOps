@@ -1,0 +1,11 @@
+Bibliotecas no linux
+Dinâmica: 
+podem ser usadas como base para outros programas ou aplicação 
+Estática:
+vai ser incorporado a Bibliotecas numa unica aplicação 
+
+Comandos linux para bibliotecas:
+$ ldd -v aplication(/usr/bin/vi) -> mostra determinada biblioteca para cada aplicação 
+$ ldconfig -> relê e regera o ld.so.cache
+$ ldconfig -p -> mostra todas bibliotecas que estão conhecidas pelo linux. 
+

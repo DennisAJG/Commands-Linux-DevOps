@@ -43,4 +43,16 @@ Partições no Linux:
     -> /var = Contem arquivos temporários
     -> /tmp = Arquivos de lock e temporários
     -> /boot = Contem os arquivos do kernel e do initrd
-    -> /usr = 
+    -> /usr = Arquivos de aplicações 
+5 - Partições que NÃO podem ser montadas fora do /
+    -> /etc 
+    -> /bin 
+    -> /sbin 
+    -> /dev 
+    -> /proc 
+    -> /sys 
+
+comandos para visualizar as partições:
+$ df -hT -> lista as partições montadas
+$ cat /proc/swaps -> mostra as informações da partição swap 
+$ fdisk -l -> usado para listar as partições e para gerenciamente de disco também 

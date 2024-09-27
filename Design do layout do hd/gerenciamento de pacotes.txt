@@ -1,0 +1,89 @@
+Gerenciamento de pacotes Debian:
+Arquivos -> .deb 
+Gerenciador de Pacotes -> # dpkg 
+Gerenciador + Repositório -> # apt-get 
+Nome do arquivo -> name_version.revision-debiancodename_architecture.debiancodename_architecture
+
+Conceitos Importantes:
+1 - Cada sistema deve usar um sistema de gerenciamento único.
+2 - Um pacote é um conjunto de arquivos relacionados a uma aplicação. 
+    Executáveis, cfgs, bibliotecas, manuais, etc, além de informações sobre dependências.
+3 - Os gerenciadores de pacotes mantém uma base de dados relacionando 
+    todos os pacotes, seus arquivos e dependências.
+
+Comandos no linux:
+$ dpkg -l -> lista os pacotes instalados 
+$ dpkg -l bash -> trás mais informações de um pacote especifico 
+$ dpkg -i name_pacote.deb -> instala um determinado pacote .deb 
+$ dpkg -I name_pacote.deb -> trás informações sobre um pacote não instalado 
+$ dpkg -s name_pacote -> mostra o status do pacote
+$ dpkg -r name_pacote -> remove um pacote especifico, porém ele mantêm na base de dados.
+$ dpkg -P name_pacote -> remove o pacote e a base de dados.
+$ dpkg-reconfigure pacote -> faz o processo de reconfiguração de pacotes que utilizam tela grafica 
+
+
+Comandos apt:
+Conceitos apt:
+O APT (Advenced Packaging Tool) é uma ferramenta para gerenciamento de pacotes em sistemas de padrão Debian.
+ 
+$ apt-cache -> mostra as informações da base de dados do apt
+$ apt-cache pkgnames -> mostra os pacotes instalados 
+$ apt-cache show name_pacote -> mostra informações de um pacote especifico
+
+Arquivo de configuração:
+/etc/apt/sources.list -> é nesse arquivo onde o apt vai fazer o download dos pacotes 
+
+$ apt-get update -> atualiza o arquivo sources.list
+$ apt-get dist-upgrade -> valida se tem algum tipo de conflito entre versão do software e faz o upgrade de tudo.
+SEMPRE UTILIZE O DIST-UPGRADE 
+$ apt-get install software -> instalada um determinado software
+$ apt-get remove software -> remove um pacote porém permanece na base de dados 
+$ apt-get purge software -> remove tudo até na base de dados 
+$ apt-get chech -> valida se tá tudo ok na base de dados 
+$ apt-get clean -> faz uma limpeza na base de dados 
+
+Para instalar o dselect -> sudo apt-get install -y dselect
+$ dselect -> altenativa grafica do apt 
+
+
+Gerenciamento de pacotes Red Hat rpm e yum:
+modo consulta rpm:
+$ rpm -aq -> lista todos os pacotes instalados na máquina 
+$ rpm -qa pacote -> lista dados de um pacote especifico
+$ rpm -ql pacote -> lista os arquivos que pertencem a essa pacote 
+
+modo instalação rpm:
+$ rpm -ivh pacote -> instala um pacote 
+$ rpm -U pacote -> faz o update do pacote 
+$ rpm -ivh --nodeps pacote -> instala um pacote ignorando as dependências
+
+modo desinstalação rpm:
+$ rpm -evh pacote -> remove um pacote 
+$ rpm -evh --test pacote -> faz um test de remoção do pacote 
+$ rpm -evh --nodeps pacote -> ignora caso um pacote seja dependente de outro pacote 
+
+mode de verificação rpm:
+$ rpm -V pacote -> Valida se um pacote está ok 
+$ rpm -q --requires pacote -> verifica os pacotes dependentes de um determinado pacote 
+
+
+Gerenciador de pacotes yum:
+principal arquivo de configuração:
+/etc/yum.conf 
+Diretorio onde o yum vai buscar a base de dados:
+/etc/yum.repos.d/
+
+Principais opções do yum:
+$ yum check -> faz uma validação se a base de dados está ok 
+$ yum install pacote -> instala um pacote e valida os dependências
+$ yum update -> atualiza todos os pacotes 
+$ yum upgrade -> além de atualizar os pacotes, ele remove pacotes obsoletos 
+$ yum check-update -> faz uma validação de pacotes que precisam ser atualizados
+$ yum list -> lista todos os pacotes instalados 
+$ yum search pacote -> mostra todos os pacotes relacionados a um pacote especifico 
+$ yum remove pacote -> remove um pacote 
+
+Utiliza o DNF:
+trás melhores de consumo de memória e compatibilidade de pacotes dependentes
+DNF vem pra substituir o YUM 
+Comandos do dnf (são os mesmos do yum).
