@@ -1,0 +1,40 @@
+Agendamento de tarefas:
+Uso do cron:
+valide se o status do cron está ativo:
+$ systemctl status cron 
+
+arquivo do crontab:
+/ect/crontab 
+campos do arquivo crontab:
+minuto  |  hora  |  dia do mês  |  mês do ano  |  dia da semana  |  user  |  comando     |
+   16   |    *   |      0       |      *       |       7         |  root  |  ls -l /tmp  |
+
+
+comando crontab:
+$ crontab -l -> lista os agendamentos que tem 
+$ crontab -l -u user -> (no root) lista os agendamentos de usuários especifico 
+$ crontab -e -> entra no modo de edição 
+
+Um exemplo detalhado do script:
+minuto                      |  hora  |  dia do mês  |  mês do ano  |  dia da semana         |  user  |  comando               |
+ 15                         |   13   |  1,10,20,30  |      *       |       1-5 (seg a sext) |  user  |  /home/user/script.sh  |
+ */10 (a cada 10 minutos )  |   *    |      *       |      *       |        7               |  user  |   cat /proc/cpuinfo    |
+
+$ crontab -r  -> remove a crontab do user.
+$ crontab import_arquivo -> importa um arquivo qualquer que tenha as configurações de crontab
+
+Os arquivos que podem ser criados /etc/cron.allow e o /etc/cron.deny são usado apara permitir ou negar um user a usar o crontab.
+
+Comando at é usado para executar um comando naquela hora ou naquele minuto.
+$ apt install -y at 
+$ at now +2hour 
+at> echo "Hora do café" 
+at> ctrl+D (sai e cria um job)
+
+$atq -> lista os jobs criados com o at
+$ at -l -> lista também os jobs criados 
+$ at 02:20pm mesdiaano -> executa numa hora especifica e na data especifica
+$ atrm 12 -> remove um job 
+$ at -d 10 -> remove um job também 
+
+Os arquivos que podem ser criados /etc/at.allow e o /etc/at.deny são usado apara permitir ou negar um user a usar o crontab.

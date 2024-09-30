@@ -1,0 +1,22 @@
+Tipos de links:
+Temos os links simbolicos e os links físicos.
+
+Hard link (link físico):
+$ ls -li name_arquivo.sh -> contem as informações como INOD 
+
+$ ln name_arquivo.sh name_link -> cria um link Hard contendo o mesmo INOD 
+
+Considerações importantes pro link hard:
+1 - Só pode ser criado na mesma partição. 
+2 - Não pode ser criado link hard para diretorios 
+
+Link simbolico:
+É um arquivo que vai aprontar pra outro arquivo. 
+$ ln -s name_link.sh new_name_link_simb.sh 
+OBS:
+o link simbolico sempre vai ter as permissões 777
+
+$ ln -s name_link.sh /tmp/teste/new_name_link_simb.sh -> pode ser apontado para outro diretorio 
+$ ln -s /var new_dir_link_simb -> cria para diretorios também 
+
+

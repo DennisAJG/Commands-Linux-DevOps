@@ -1,0 +1,25 @@
+Comando fdisk para gerenciamento de partições.
+OBS: necessário estár como root para utilizar o fdisk
+$ fdisk -l -> lista os discos na máquina 
+$ fdisk /dev/sdb -> entra no utilitário do fdisk num disco especifico 
+OBS: o fdisk usa partições do tipo MBR 
+
+Opções dentro do fdisk:
+n -> adiciona uma nova partição ('p' primary e 'e' extendida)
+p -> lista as partições 
+q -> sai sem salvar as mudanças 
+w -> sai salvando as mudanças 
+d -> exclui uma partição 
+l -> lista os tipos de partições 
+t -> muda o tipo de partição 
+F -> mostra quanto de GB tem livre sem está alocado no disco 
+
+
+usando o GDISK:
+trabalha em partições do tipo GPT 
+$ gdisk -l /dev/sda -> listas as partições do disco
+$ gdisk -> entra no gerenciador 
+Opções:
+n -> nova partição
+w -> sai e salva 
+

@@ -1,0 +1,94 @@
+Oque é criptografia:
+Uma maneira de garantir que os dados sejam enviados de um ponto a outro de maneira segura
+Principais Objetivos:
+> Autenticidade (do remetente)
+> Confidencialidade (da mensagem)
+> Integridade (da mensagem) -> garantir que o mesmo que foi enviado é o mesmo que foi recebido 
+> Irretratabilidade (do remetente) -> garantir que o remetente não nege que foi ele que escreveu a mensagem 
+
+
+Conceito de ssh (secure shell):
+Protocolo de criptografia de Rede.
+> Cria um canal seguro de comunicação entre 2 hosts, um client e um servidor
+> Utiliza chaves assimétricas, ou seja, um conjunto de chaves públicas e privadas 
+> OpenSSH é a implementação mais comum 
+
+Conceitos de chaves assimétricas:
+> Cada máquina possui sua chave pública e sua chave privada, que são associadas
+> A chave pública será compartilhada com o remetente, que a utilizará para criptografar 
+  mensagem antes de enviá-la 
+> A chava privada é utilizada pelo destinatário para descriptografar os dados recebidos
+
+
+No linux:
+$ apt-get install -y openssh-server -> instala o openssh server na máquina 
+
+Principais arquivos:
+ssh_host_rsa_key -> chave privada
+ssh_host_rsa_key.pub -> chave publica 
+OBS:
+as permisões:
+600 -> chave privada
+644 -> chave publica
+
+comando para acessar uma máquina via ssh:
+$ ssh user_destino@ip_host_remoto (ou o nome do host que pode ser configurado no /etc/hosts)
+$ ssh -l user ip_host_remoto 
+
+arquivo .ssh/known_hosts -> armazena as chaves de conexão de destino 
+
+Gerenciando acessos as máquina sem precisar digitar senhas.
+necessário está dentro do diretorio .ssh
+execute o comando:
+$ ssh-keygen -t rsa -b 1024  -> opções '-t' para o tipo e o '-b' opção em bits 
+$ ls -la 
+id_rsa -> 
+id_rsa.pub -> mandar para a máquina que você quer conectar
+
+na máquina onde vai ser conectada, edite o arquivo .ssh/authorized_keys
+que é onde será necessário jogar os dados da chave publica
+
+$ ssh "id_rsa" user@ip_host_remoto 
+
+IMPORTANTE:
+sempre use a criação de chaves ssh com senha. 
+$ ssh-keygen -t rsa -b 1024 
+Enter passphrase (empty for no passphrase): digite a senha 
+
+$ ssh-agent -> monitora as chaves ssh 
+$ ssh-add -> adiciona as configurações das senhas que foram geradas 
+
+$ ssh user@ip_host_remoto "ls -ls /tmp" -> executa um comando sem precisar se conectar na outra máquina 
+
+Tunel ssh:
+$ ssh -N -f -L port:ip_remoto:port_ip_remoto user@ip_remoto
+$ ssh -N -f -L 6432:3.56.21.10:5432 user_postgres@3.56.21.10 -> um exemplo de tunel para servidores postgres
+
+Uso do scp:
+Envia e recebe arquivo via ssh 
+$ scp name_arquvio user@ip_host_remoto:destino (diretorio de destino)
+$ scp user@ip_host_remoto:destino_do_arquivo .(diretorio local) ou /tmp (para um diretorio)
+
+
+Criptografia de arquivos:
+GPG - GNU PRIVACY GUARD
+$ apt install gpg 
+Gerando chaves publicas e privadas 
+$ gpg --gen-key 
+rsa
+2048
+1y -> expiração da chave 
+Real name:
+email:
+comment: 
+change: 
+Enter passphrase:
+
+$ gpg --list-keys -> verifica as chaves 
+$ .gnupg/
+$ gpg --export "user" > chave-user.pub -> gera o arquivo e exporta a public da chave 
+$ gpg --keyserver keys.gnupg.net --send-keys id_chave_public -> envia para um servidor publico 
+
+Na outra máquina:
+$ gpg --import name_arquvio.pub 
+$ gpg --keyserver keys.gnupg.net --recv-key id_keys -> import pelo servidor de chaves 

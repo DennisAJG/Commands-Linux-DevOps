@@ -1,0 +1,27 @@
+Configurações de montagem nas partições.
+usado do mount e umount (mudanças e configurações temporárias)
+deixando de forma fixa as montagens é usando o arquivo:
+/etc/fstab 
+
+$ mount -> mostra tudo que está montado no sistema 
+$ mount -a -> monta tudo que está dentro do /etc/fstab 
+$ mount /dev/sdb2 /tmp/test_mount -> monta um disco especifico. 
+$ mount --bind /opt /home/dennis/testes/ -> faz um ponto de montagem associoando uma partição com a outra
+$ umount /dev/sdb2 -> desmonta a partição 
+
+Configuração do /etc/fstab:
+$ nano /etc/fstab 
+Parametros:
+<file system>
+UUID=codigo -> identificador unico no linux 
+<mount point> -> diretorio onde quer ser montado 
+/tmp 
+<type> -> tipo da partição que vai ser montada 
+auto -> defini automaticamente 
+<options> -> variais opções para setar a partição (se a partição vai ser apenas para leitura)
+defaults 
+<dump> -> configurações de backup (usado apenas para quando inicar a máquina)
+0 
+<pass> -> check do filesystem 
+2 
+

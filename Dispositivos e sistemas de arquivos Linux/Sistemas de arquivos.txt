@@ -1,0 +1,29 @@
+Tipos de Filesystems:
+
+Tipo:                Journal:        Características:
+ext2                  Não            Original do inicio do Linux
+ext3                  Sim            ext2 com journal
+ext4                  Sim            Melhorias do ext3
+XFS                   Sim            Criado pela SGI para o IRIX
+JFS                   Sim            Criado pela IBM
+ReiserFs              Sim            Melhor performance com pequenos arquivos 
+Brtfs                 Sim            Desenvolvido inicialmente pela Oracle. Nova geração.
+VFAT                  Não            Utilizado em sistemas Windows
+
+OBS:
+ESTUDE SOBRE Journal e mais um pouco sobre filesystems na net. 
+
+Oque é um Filesystems:
+É a forma como o linux vai trabalhar em cima do disco.
+
+Principal comando para definir um filesystems numa partição:
+$ mkfs -t ext3 /dev/sdb1 -> defini a estrutura de filesystem que vai ser usado na partição 
+(Defini a partição sdb1 como ext3)
+$ file -s /dev/sdb1 -> veirfica qual o tipo de filesystem a partição está 
+
+OBS:
+O linux não suporta xfs, caso queria usar esse tipo de filesystem 
+
+$mkswap /dev/sdb4 -> formata a partição do tipo filesystem swap (Não basta apenas ir no fdisk e formatar)
+pra incluir essa partição já com o filesystem configurado, use o comando:
+$ swapon /dev/sdb4 

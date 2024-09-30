@@ -1,0 +1,53 @@
+Gerenciamento de users e group:
+
+Principal arquivo que faz o gerenciamento dos usuários e grupos é:
+/etc/passwd
+Exemp:
+root:x:0:0:root:/root:/bin/bash (/bin/false -> user não faz acesso ao sistema)
+nome_user:senha_user:UUID:GUID:Descrição:home_user:shell_padrão
+
+Principal arquivo para o gerenciamento de senhas dos users:
+/etc/shadow
+root:$iuydvyci32890r9wbcsb:17212:0:99999:7:::
+Exemp:
+user:rash_password:config_account:
+
+Principal arquivo para o gerenciamento dos grupos:
+/etc/group
+root:x:1005:
+name_group:password:GUID:user_pertencentes_ao_group
+
+
+
+Comandos para apagar, criar e alterar usuários e grupos:
+useradd:
+$ useradd user1 -> cria um user,ele não usere o /bin/bash por um bug do ubuntu 
+$ useradd -c "comentario" -s /bin/bash user1 -> -c para comentario e -s para definir o shell 
+$ useradd -m user1 -> força a criação no /home 
+
+userdel:
+$ userdel user1 -> apaga um usuário, porém não apaga do /home 
+$ userdel -r user1 -> remove o /home do user
+
+usermod:
+$ usermod -c "comentario" user1 -> altera alguma informação do user (-c comentario)
+$ usermod -s /bin/zsh user1 -> altera o shell que o user vai usar 
+$ usermod -G group use1 -> ediciona um usuário ao grupo
+
+passwd:
+$ passwd user1 -> defini uma senha ou altera a senha de um user já criado 
+
+su:
+$ su user1 -> acessa um novo user no terminal 
+
+adduser: (é um script)
+$ adduser use1 -> cria um user solicitando a senha e já adicionando a grupos
+
+
+Grupos no sistema:
+$ groupadd group -> cria um grupo 
+$ groupadd -g 2000 group -> cria um grupo já definindo um GUID 
+$ groupdel group -> deleta um grupo
+$ groupmod -n name_group new_name_group -> altera o nome do group 
+$ groupmod -g 2001 name_group -> altera o GUID do grupo 
+$ gpasswd group -> defini uma senha para um grupo 

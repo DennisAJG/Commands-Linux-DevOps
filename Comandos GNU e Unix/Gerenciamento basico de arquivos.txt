@@ -74,6 +74,9 @@ find /home -name Aula10 -> procura no /home por nome o Aula10
 find /home -name Aula* 
 find /home -user lpic1 -name Aula1* -> -user procura por usuário 
 find ./ -ctime -1 -> procura todos os arquivos que foram executados um dia antes 
+find /home -size +1GB  -> procura arquivos que tem mais de 1GB 
+find /home -size -5GB -user name_user -> procura arquivos com o user "name_user" e que tenham menos de "5GB"
+find /home --print0 | xargs -0 ls -l -> usado para procurar arquivos que tenham espaçamentos nos nomes 
 
 
 Comando tar: comando usado para comprimir arquivos e descomprimir 

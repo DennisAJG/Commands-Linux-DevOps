@@ -1,0 +1,18 @@
+diretorios obrigatoriamente no / 
+/bin -> Programas críticos / Todos os users  -> cp,ls,kill,rm 
+/sbin -> Programas críticos / SysAdmin  -> fdisk,fsck,mkfs,quotaon 
+/etc -> Arquivos de configuração do sistemas  -> passwd, inittab,profile
+/lib -> Bibliotecas e Módulos Kernel  
+/mnt e /media -> Pontos de montagem de media  -> /mnt/dvd, /media/cdrom 
+/proc e /sys -> informações de Hardware e Processo  -> interrupts, cpu 
+/dev  -> Dispositivos e Arquivos Especiais  -> sda, sr0,tty
+
+
+diretorios que podem ser montados fora do /
+/root -> Diretorio padrão do usuário root 
+/boot -> Arquivos de configuração do bootloader, imagens do kernel e Identificador
+/tmp -> arquivos temporários
+/home -> Diretorio e arquivos dos usuários 
+/var -> Arquivos dinamicos como logs,filas e etc  -> /var/log, /var/mail 
+/usr -> Instalação de programas do linux,normalmente não críticos
+/opt -> Instalação de aplicações em Geral 

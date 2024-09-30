@@ -1,0 +1,19 @@
+Comandos df e du:
+$ df -> lista as principais partições e aonde elas estão montadas. 
+$ df -h -> lista de uma forma melhor para leitura 
+$ df -a -> monta partições dinamicas 
+$ df -hT -> mostra também o tipo de filesystem 
+
+$ du -> mostra quanto de espaço está sendo usado por cada diretorio 
+$ du -a -> mostra os arquivos também 
+$ du -ah -> mostra de uma forma melhor 
+$ du -ahc -> faz a soma
+$ du -hs -> mostra um somario 
+$ du -hs / -> mostra da raiz 
+$ du -sh /home 
+
+
+Comando para checagem dos filesystems:
+OBS: o fsck só vai funcionar em partições que não estão montadas ou que só estejam em leitura 
+$ fsck /dev/sdb1 -> usado para analisar uma partição e corrigir 
+

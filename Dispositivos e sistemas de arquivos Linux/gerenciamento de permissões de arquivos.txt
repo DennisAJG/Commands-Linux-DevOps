@@ -1,0 +1,89 @@
+Bits de modos de acesso. 
+
+|SUID   SGID   Stick | r   w   x  |  r  w  x  |  r  x  x  |
+| 0       0      0   | 0   0   0  |  0  0  0  |  0  0  0  |
+| Atributos Epsc     | Usuário    |  Grupo    |  Outros   |
+
+$ ls -l -> você consegue visualizar as permissões 
+
+Para arquivo:
+r -> Leitura 
+w -> Escrita/modificação/apagar 
+x -> Execução 
+
+Para diretorio:
+r -> Lista o conteudo do diretorio
+w -> Criar e remover arquivos nesse diretorio 
+x -> Consegue acessar (cd diretorio)
+
+Alterando Permissões - chmod 
+|  Alvo       |  Operação   | Permissão        |
+| u - user    | +           | r -read          |
+| g - group   | -           | w - write        |
+| o - others  | =           | x - execute      |
+| a - all     |             |                  |
+------------------------------------------------
+
+exemplos:
+-rw-rw-r--   lpi1   suporte  arquivo.txt 
+$ chmod g-w arquivo.txt = -rw-r--r--
+$ chmod a+x arquivo.txt = -rwxrwxr-x
+$ chmod ug+x arquivo.txt = -rwxrwxr--
+
+
+Mod Octal:
+|SUID   SGID   Stick |     r   w   x      |     r  w  x      |       r  x  x      |
+| 0       0      0   |     1   1   1      |     1  1  0      |       1  0  0      |
+| Atributos Epsc     |       Usuário      |      Grupo       |       Outros       |
+|                    |     111 = 4+2+1=7  |  110 = 4+2+0=6   |   100 = 4+0+0=4    |
+|                    |         rwx        |        rw-       |         r--        |
+r 2/2 -> 4   
+w 2/1 -> 2 
+x 2/0 -> 1
+
+Alterando Permissões - chmod 
+|  Alvo       |  Operação   | Permissão        |
+| u - user    | +           | r -read          |
+| g - group   | -           | w - write        |
+| o - others  | =           | x - execute      |
+| a - all     |             |                  |
+------------------------------------------------
+
+exemplos:
+-rw-rw-r--   lpi1   suporte  arquivo.txt 
+$ chmod 644 arquivo.txt = -rw-r--r--
+$ chmod 775 arquivo.txt = -rwxrwxr-x
+$ chmod 774 arquivo.txt = -rwxrwxr--
+
+$ chmod -R 644 diretorio -> ele altera as permissões recursivamente em todos os arquivos do diretorio. 
+
+Para scripts geralmente usamos o u+s SUID para atribuir permissões em que outros usuários consigam executar o script. 
+$ chmod u+s script.sh 
+
+
+umask:
+Usado para definir uma mascara em que todas vez que for criado um arquivo ou 
+diretorio, ele já vem com as permissões definidas na mascara. 
+$ umask -> verifica  a mascara padrão 
+0002
+como funciona:
+O umask faz a subtração para arquivo em 666 - 002 
+O umask faz a subtração para diretorio em 777 - 002
+
+$ umask 022 -> altera o umask 
+0022
+
+OBS:
+Cada usuário tem o seu umask expecifico. 
+
+
+chown -> Usado para alterar o user e group de um arquivo ou diretorio. 
+$ chown user:group name_arquivo -> altera o user e group 
+$ chowm user name_arquivo -> altera apenas o user 
+$ chown :group name_arquivo -> altera apenas o group 
+$ chown user:group name_dir -> altera o user e group do diretorio (não altera oque tem dentro do dir)
+$ chown -R user:group name_dir -> altera o user e group do diretorio e tudo oque tem dentro dele 
+
+chgrp -> usado para mudar apenas o group 
+$ chgrp group name_arquivo 
+
