@@ -20,7 +20,7 @@ memória. Os mais comuns são o GRUB e o LILO.
 
 
 Comando para visualizar todo o processo de boot:
-$ dmesg | less -> lê oque foi registrado no boot 
+# dmesg | less -> lê oque foi registrado no boot 
 
 
 

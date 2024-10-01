@@ -42,7 +42,7 @@ para visualizar a lista no linux fica no arquivo:
 
 Conceito de DMA:
 Direct Memory Addressing é um canal que permite que os dispositivos transmitam os 
-dados dieretamente para a memória, sem utilizar a CPU e não é utilizado por todos os 
+dados diretamente para a memória, sem utilizar a CPU e não é utilizado por todos os 
 dispositivos.
 
 para visualizar basta acessar o arquivo:
@@ -90,7 +90,7 @@ Alguns arquivos do /proc:
 $ cat /proc/cpuinfo -> tras informações da CPU 
 $ cat /proc/meminfo -> tras informações da RAM 
 $ cat /proc/swaps -> informações de swap 
-$ cat /proc/cmdline -> são parametros que o bootloader (GRUB) para para o kernel 
+$ cat /proc/cmdline -> são parametros que o bootloader (GRUB) para o kernel 
 $ cat /proc/filesystems -> mostra os tipos de filesystems que podem ser usados.
 $ cat /proc/mounts -> mostra as Partições que estão montadas
 

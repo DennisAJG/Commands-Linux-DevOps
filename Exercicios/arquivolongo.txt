@@ -103,3 +103,7 @@ To become LPIC-2 certified the candidate must be able to:
 
 dennis
 teste
+
+dennis
+
+estou nesse exato momento testando o tail -f 

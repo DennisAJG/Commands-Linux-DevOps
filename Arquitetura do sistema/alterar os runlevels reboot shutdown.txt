@@ -46,7 +46,7 @@ Tipos de serviços:
 5 - target - equivale ao runlevel 
 
 Principais comandos do systemd:
-$ systemctl list-units -> lista todas as unidades
+$ systemctl list-units -> lista todas as unidades 
 $ systemctl rebbot -> rebbot da máquina 
 $ systemctl poweroff -> desliga a máquina 
 $ systemctl set-default multi-user.target -> defini o multi-user como target padrão 
@@ -81,7 +81,7 @@ $ halt -> desliga o linux e não a máquina
 $ wall "mensagem" -> manda uma mensagem para todos os usuários do sistema 
 
 
-ACPI - Advanced Configuration adn PowerInterface:
+ACPI - Advanced Configuration adm PowerInterface:
 trabalha no gerenciamento da energia do hardware 
 $ sudo apt install -y acpi 
 $ acpi -> informações da bateria 
